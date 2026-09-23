@@ -37,7 +37,7 @@ export const BUSINESS_FALLBACK: BusinessSettings = {
     { day: "Sunday", time: "11:00 – 16:00" },
     { day: "Bank Holidays", time: "By appointment" },
   ],
-  social: { instagram: "#", facebook: "#", youtube: "#", linkedin: "#" },
+  social: { instagram: "#", facebook: "#", youtube: "#", linkedin: "#", tiktok: "" },
 };
 
 export const HEADER_FALLBACK: HeaderSettings = {
@@ -63,7 +63,11 @@ export function useBusiness(): BusinessSettings {
     queryFn: () => getSetting<BusinessSettings>("business"),
     staleTime: 60_000,
   });
-  return { ...BUSINESS_FALLBACK, ...(data ?? {}) };
+return {
+  ...BUSINESS_FALLBACK,
+  ...(data ?? {}),
+  social: { ...BUSINESS_FALLBACK.social, ...(data?.social ?? {}) },
+};
 }
 
 export function useHeaderSettings(): HeaderSettings {
