@@ -50,7 +50,7 @@ export type BusinessSettings = {
   address: string;
   website: string;
   hours: { day: string; time: string }[];
-  social: { instagram: string; facebook: string; youtube: string; linkedin: string };
+    social: { instagram: string; facebook: string; youtube: string; linkedin: string; tiktok: string };
 };
 
 export type HeaderSettings = {
