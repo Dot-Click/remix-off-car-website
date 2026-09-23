@@ -33,8 +33,12 @@ function SettingsPage() {
   const [form, setForm] = useState<BusinessSettings>(BUSINESS_FALLBACK);
 
   useEffect(() => {
-    if (data) setForm({ ...BUSINESS_FALLBACK, ...data });
-  }, [data]);
+    if (data) setForm({
+  ...BUSINESS_FALLBACK,
+  ...data,
+  social: { ...BUSINESS_FALLBACK.social, ...(data.social ?? {}) },
+});
+}, [data]);
 
   const save = useMutation({
     mutationFn: () => saveSetting("business", form),
@@ -154,6 +158,11 @@ function SettingsPage() {
                 value={form.social.linkedin}
                 onChange={(v) => set("social", { ...form.social, linkedin: v })}
               />
+              <Text
+  label="TikTok"
+  value={form.social.tiktok}
+  onChange={(v) => set("social", { ...form.social, tiktok: v })}
+/>
             </div>
           </Card>
         </div>
