@@ -103,6 +103,24 @@ export function Footer() {
                 <Icon className="h-4 w-4" />
               </a>
             ))}
+                        {/^https?:\/\//i.test(business.social.tiktok?.trim() ?? "") && (
+              <a
+                href={business.social.tiktok.trim()}
+                aria-label="TikTok profile"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="grid h-10 w-10 place-items-center rounded-lg border border-ink-border text-ink-muted transition-colors hover:border-accent hover:text-accent"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  className="h-4 w-4"
+                >
+                  <path d="M16.6 2c.3 2.6 1.8 4.2 4.4 4.4v3.4a8.2 8.2 0 0 1-4.4-1.4v7.1a6.5 6.5 0 1 1-5.6-6.4v3.5a3.1 3.1 0 1 0 2.2 2.9V2h3.4Z" />
+                </svg>
+              </a>
+            )}
           </div>
         </div>
 
