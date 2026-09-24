@@ -297,14 +297,15 @@ function VehiclePage() {
               </div>
               <Input
                type="tel"
+               className="mt-4"
                placeholder="WhatsApp number (with country code)"
                maxLength={20}
               value={enquiry.whatsapp}
               onChange={(e) =>
-              setEnquiry({ ...enquiry, whatsapp: e.target.value })
-              }
-         required
-      />
+               setEnquiry({ ...enquiry, whatsapp: e.target.value })
+           }
+  required
+/>
               <Textarea className="mt-4" rows={4} maxLength={1000} placeholder="Your message" value={enquiry.message} onChange={(e) => setEnquiry({ ...enquiry, message: e.target.value })} />
               <Button type="submit" className="mt-5" size="lg" variant="accent">Send Inquiry Request</Button>
             </form>
