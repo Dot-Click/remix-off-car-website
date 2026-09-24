@@ -275,7 +275,7 @@ function VehiclePage() {
                   await submitEnquiry({
               name: enquiry.name.trim(),
               email: enquiry.email.trim(),
-              whatsapp: enquiry.whatsapp.trim(),
+              phone: enquiry.whatsapp.trim(),
               message: enquiry.message.trim() || "Enquiry from vehicle page",
              subject: `Enquiry: ${vehicle.year} ${vehicle.make} ${vehicle.model}`,
             source: "vehicle",
