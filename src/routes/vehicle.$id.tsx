@@ -273,20 +273,21 @@ function VehiclePage() {
                   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(vehicle.id);
                 try {
                   await submitEnquiry({
-                    name: enquiry.name.trim(),
-                    email: enquiry.email.trim(),
-                    message: enquiry.message.trim() || "Enquiry from vehicle page",
-                    subject: `Enquiry: ${vehicle.year} ${vehicle.make} ${vehicle.model}`,
-                    source: "vehicle",
-                    vehicle_id: isUuid ? vehicle.id : null,
-                    vehicle_label: `${vehicle.year} ${vehicle.make} ${vehicle.model}`,
-                  });
+              name: enquiry.name.trim(),
+              email: enquiry.email.trim(),
+              whatsapp: enquiry.whatsapp.trim(),
+              message: enquiry.message.trim() || "Enquiry from vehicle page",
+             subject: `Enquiry: ${vehicle.year} ${vehicle.make} ${vehicle.model}`,
+            source: "vehicle",
+            vehicle_id: isUuid ? vehicle.id : null,
+            vehicle_label: `${vehicle.year} ${vehicle.make} ${vehicle.model}`,
+             });
                 } catch {
                   toast.error("Could not send your enquiry — please try again");
                   return;
                 }
                 toast.success("Enquiry sent — a specialist will call you shortly");
-                setEnquiry({ name: "", email: "", message: "" });
+                setEnquiry({ name: "", email: "", whatsapp: "", message: "" });
               }}
             >
               <h3 className="font-display text-xl font-semibold">Request Inquiry</h3>
