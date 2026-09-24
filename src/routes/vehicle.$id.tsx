@@ -295,6 +295,16 @@ function VehiclePage() {
                 <Input placeholder="Your name" maxLength={100} value={enquiry.name} onChange={(e) => setEnquiry({ ...enquiry, name: e.target.value })} />
                 <Input type="email" placeholder="Email address" maxLength={255} value={enquiry.email} onChange={(e) => setEnquiry({ ...enquiry, email: e.target.value })} />
               </div>
+              <Input
+               type="tel"
+               placeholder="WhatsApp number (with country code)"
+               maxLength={20}
+              value={enquiry.whatsapp}
+              onChange={(e) =>
+              setEnquiry({ ...enquiry, whatsapp: e.target.value })
+              }
+         required
+      />
               <Textarea className="mt-4" rows={4} maxLength={1000} placeholder="Your message" value={enquiry.message} onChange={(e) => setEnquiry({ ...enquiry, message: e.target.value })} />
               <Button type="submit" className="mt-5" size="lg" variant="accent">Send Inquiry Request</Button>
             </form>
