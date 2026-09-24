@@ -76,7 +76,12 @@ function VehiclePage() {
   const { vehicle } = Route.useLoaderData();
   const [deposit, setDeposit] = useState([Math.round(vehicle.price * 0.1)]);
   const [term, setTerm] = useState([48]);
-  const [enquiry, setEnquiry] = useState({ name: "", email: "", message: "" });
+  const [enquiry, setEnquiry] = useState({
+  name: "",
+  email: "",
+  whatsapp: "",
+  message: "",
+});
 
   const canBuyOnline = vehicle.onlinePurchase !== false && vehicle.status !== "Sold";
 
