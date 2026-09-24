@@ -92,11 +92,35 @@ function Enquiries() {
                   </span>
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-semibold">{e.name}</p>
-                    <p className="truncate text-xs text-muted-foreground">
-                      {e.email}
-                      {e.phone ? ` · ${e.phone}` : ""} · {shortDate(e.created_at)}
-                      {e.vehicle_label ? ` · ${e.vehicle_label}` : ""}
-                    </p>
+                   <div className="mt-1 space-y-1 text-xs text-muted-foreground">
+
+  <p className="flex items-center gap-2">
+    <span>✉ Email:</span>
+    <a href={`mailto:${e.email}`} className="hover:underline">
+      {e.email}
+    </a>
+  </p>
+
+  {e.phone && (
+    <p className="flex items-center gap-2">
+      <span>📱 WhatsApp:</span>
+      <a
+        href={`https://wa.me/${e.phone.replace(/\D/g, "")}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-green-600 hover:underline"
+      >
+        {e.phone}
+      </a>
+    </p>
+  )}
+
+  <p>
+    {shortDate(e.created_at)}
+    {e.vehicle_label ? ` · ${e.vehicle_label}` : ""}
+  </p>
+
+</div>
                   </div>
                   <Badge variant={e.status === "new" ? "default" : "outline"}>
                     {STATUS_LABEL[e.status] ?? e.status}
