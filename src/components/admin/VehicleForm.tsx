@@ -28,6 +28,7 @@ import {
 } from "@/lib/vehicle-admin";
 
 type FormState = {
+  vehicle_code: string;
   make: string;
   model: string;
   year: string;
@@ -47,6 +48,7 @@ type FormState = {
 };
 
 const emptyState: FormState = {
+   vehicle_code: "",
   make: "",
   model: "",
   year: String(new Date().getFullYear()),
@@ -67,6 +69,7 @@ const emptyState: FormState = {
 
 function toState(v: AdminVehicle): FormState {
   return {
+    vehicle_code: v.vehicle_code ?? "",
     make: v.make,
     model: v.model,
     year: String(v.year),
@@ -136,6 +139,7 @@ export function VehicleForm({ vehicle }: { vehicle?: AdminVehicle }) {
     e.preventDefault();
     setSaving(true);
     const payload = {
+      vehicle_code: form.vehicle_code.trim() || null,
       make: form.make.trim(),
       model: form.model.trim(),
       year: Number(form.year),
@@ -175,6 +179,7 @@ export function VehicleForm({ vehicle }: { vehicle?: AdminVehicle }) {
       <div className="rounded-2xl border border-border bg-card p-6 shadow-soft sm:p-8">
         <h2 className="font-display text-xl font-semibold">Vehicle details</h2>
         <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <Field label="Vehicle Code" required value={form.vehicle_code} onChange={(v) => set("vehicle_code", v)} placeholder="J1-001" />
           <Field label="Make" required value={form.make} onChange={(v) => set("make", v)} />
           <Field label="Model" required value={form.model} onChange={(v) => set("model", v)} />
           <Field label="Year" required type="number" value={form.year} onChange={(v) => set("year", v)} />
