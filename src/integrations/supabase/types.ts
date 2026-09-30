@@ -488,6 +488,7 @@ export type Database = {
           transmission: string | null
           updated_at: string
           year: number
+          vehicle_code: string | null
         }
         Insert: {
           body_type?: string | null
