@@ -281,6 +281,7 @@ function VehiclePage() {
             source: "vehicle",
             vehicle_id: isUuid ? vehicle.id : null,
             vehicle_label: `${vehicle.year} ${vehicle.make} ${vehicle.model}`,
+            vehicle_code: vehicle.vehicle_code,
              });
                 } catch {
                   toast.error("Could not send your enquiry — please try again");
