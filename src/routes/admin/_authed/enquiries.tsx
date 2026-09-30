@@ -116,9 +116,10 @@ function Enquiries() {
   )}
 
   <p>
-    {shortDate(e.created_at)}
-    {e.vehicle_label ? ` · ${e.vehicle_label}` : ""}
-  </p>
+  {shortDate(e.created_at)}
+  {e.vehicle_label ? ` · ${e.vehicle_label}` : ""}
+  {e.vehicle_code ? ` · Code: ${e.vehicle_code}` : ""}
+</p>
 
 </div>
                   </div>
@@ -136,6 +137,11 @@ function Enquiries() {
                 {open === e.id && (
                   <div className="mt-4 rounded-xl border border-border bg-muted/30 p-4">
                     {e.subject && <p className="text-sm font-medium">{e.subject}</p>}
+                    {e.vehicle_code && (
+  <p className="mt-1 text-sm font-semibold">
+    Vehicle Code: {e.vehicle_code}
+  </p>
+)}
                     <p className="mt-1 whitespace-pre-wrap text-sm text-muted-foreground">{e.message}</p>
                     <p className="mt-3 text-[11px] uppercase tracking-widest text-muted-foreground">
                       Source: {e.source}
