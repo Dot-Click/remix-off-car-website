@@ -19,6 +19,7 @@ export function mapRowToVehicle(
 
   return {
     id: row.id,
+    vehicle_code: row.vehicle_code,
     make: row.make,
     model: row.model,
     variant: row.engine ?? row.fuel_type ?? "",
