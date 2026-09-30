@@ -7,6 +7,7 @@ import hero from "@/assets/hero-car.jpg";
 
 export type Vehicle = {
   id: string;
+  vehicle_code?: string | null;
   make: string;
   model: string;
   variant: string;
