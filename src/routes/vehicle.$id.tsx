@@ -110,6 +110,9 @@ function VehiclePage() {
   ).slice(0, 4);
 
   const specs = [
+    ...(vehicle.vehicle_code
+  ? [{ icon: Car, label: "Vehicle Code", value: vehicle.vehicle_code }]
+  : []),
     { icon: CalendarDays, label: "Year", value: String(vehicle.year) },
     { icon: Gauge, label: "Mileage", value: formatMiles(vehicle.mileage) },
     { icon: Cog, label: "Transmission", value: vehicle.transmission },
