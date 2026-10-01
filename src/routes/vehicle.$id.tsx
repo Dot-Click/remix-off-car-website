@@ -145,6 +145,9 @@ const [callback, setCallback] = useState({
             {vehicle.year} {vehicle.make} {vehicle.model}
           </h1>
           <p className="mt-3 text-ink-muted">{vehicle.variant} · {formatMiles(vehicle.mileage)} · {vehicle.transmission}</p>
+          <p className="mt-5 font-display text-4xl font-bold text-ink-foreground">
+  {formatPrice(vehicle.price)}
+</p>
         </div>
       </section>
 
