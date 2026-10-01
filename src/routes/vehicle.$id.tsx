@@ -83,8 +83,12 @@ function VehiclePage() {
   message: "",
 });
 
-  const [enquiryType, setEnquiryType] = useState<"enquiry" | "callback">("enquiry");
+const [callbackOpen, setCallbackOpen] = useState(false);
 
+const [callback, setCallback] = useState({
+  name: "",
+  phone: "",
+});
   const canBuyOnline = vehicle.onlinePurchase !== false && vehicle.status !== "Sold";
 
   const whatsappHref = `${BRAND.whatsapp}?text=${encodeURIComponent(
@@ -283,10 +287,8 @@ function VehiclePage() {
               phone: enquiry.whatsapp.trim(),
               message: enquiry.message.trim() || "Enquiry from vehicle page",
             subject:
-  enquiryType === "callback"
-    ? `Call Back Request: ${vehicle.year} ${vehicle.make} ${vehicle.model}`
-    : `Enquiry: ${vehicle.year} ${vehicle.make} ${vehicle.model}`,
-            source: enquiryType === "callback" ? "callback" : "vehicle",
+ subject: `Enquiry: ${vehicle.year} ${vehicle.make} ${vehicle.model}`,
+source: "vehicle",
             vehicle_id: isUuid ? vehicle.id : null,
             vehicle_label: `${vehicle.year} ${vehicle.make} ${vehicle.model}`,
             vehicle_code: vehicle.vehicle_code,
@@ -296,15 +298,12 @@ function VehiclePage() {
                   return;
                 }
                 toast.success(
-  enquiryType === "callback"
-    ? "Call back request sent successfully"
-    : "Enquiry sent — a specialist will call you shortly"
-);
+  toast.success("Enquiry sent — a specialist will call you shortly");
                 setEnquiry({ name: "", email: "", whatsapp: "", message: "" });
               }}
             >
               <h3 className="font-display text-xl font-semibold">
-  {enquiryType === "callback" ? "Request a Call Back" : "Request Inquiry"}
+                Request Inquiry
 </h3>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
                 <Input placeholder="Your name" maxLength={100} value={enquiry.name} onChange={(e) => setEnquiry({ ...enquiry, name: e.target.value })} />
@@ -322,8 +321,8 @@ function VehiclePage() {
   required
 />
               <Textarea className="mt-4" rows={4} maxLength={1000} placeholder="Your message" value={enquiry.message} onChange={(e) => setEnquiry({ ...enquiry, message: e.target.value })} />
-             <Button type="submit" className="mt-5" size="lg" variant="accent">
-  {enquiryType === "callback" ? "Request Call Back" : "Send Inquiry Request"}
+            <Button type="submit" className="mt-5" size="lg" variant="accent">
+  Send Inquiry Request
 </Button>
             </form>
           </div>
@@ -355,23 +354,80 @@ function VehiclePage() {
                 <Button
                   size="lg"
                   variant={canBuyOnline ? "outline" : "accent"}
-                 onClick={() => {
-  setEnquiryType("enquiry");
-  scrollToEnquiry();
-}}
+                 onClick={scrollToEnquiry}
                 >
                   Request Inquiry <ArrowRight />
                 </Button>
             <Button
   size="lg"
   variant="outline"
-  onClick={() => {
-    setEnquiryType("callback");
-    scrollToEnquiry();
-  }}
+  onClick={() => setCallbackOpen(true)}
 >
   <Phone className="h-5 w-5" /> Request a Call Back
 </Button>
+                {callbackOpen && (
+  <div className="rounded-xl border border-border bg-secondary p-4">
+    <p className="font-semibold">Request a Call Back</p>
+    <p className="mt-1 text-sm text-muted-foreground">
+      Leave your details and we’ll call you back.
+    </p>
+
+    <Input
+      className="mt-4"
+      placeholder="Your name"
+      value={callback.name}
+      onChange={(e) =>
+        setCallback({ ...callback, name: e.target.value })
+      }
+    />
+
+    <Input
+      className="mt-3"
+      type="tel"
+      placeholder="Phone number"
+      value={callback.phone}
+      onChange={(e) =>
+        setCallback({ ...callback, phone: e.target.value })
+      }
+    />
+
+    <Button
+      className="mt-3 w-full"
+      variant="accent"
+      onClick={async () => {
+        if (callback.name.trim().length < 2 || !callback.phone.trim()) {
+          toast.error("Please enter your name and phone number");
+          return;
+        }
+
+        try {
+          const isUuid =
+            /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(vehicle.id);
+
+          await submitEnquiry({
+            name: callback.name.trim(),
+            email: "",
+            phone: callback.phone.trim(),
+            message: "Customer requested a call back",
+            subject: `Call Back Request: ${vehicle.year} ${vehicle.make} ${vehicle.model}`,
+            source: "callback",
+            vehicle_id: isUuid ? vehicle.id : null,
+            vehicle_label: `${vehicle.year} ${vehicle.make} ${vehicle.model}`,
+            vehicle_code: vehicle.vehicle_code,
+          });
+
+          toast.success("Call back request sent successfully");
+          setCallback({ name: "", phone: "" });
+          setCallbackOpen(false);
+        } catch {
+          toast.error("Could not send call back request — please try again");
+        }
+      }}
+    >
+      Request Call Back
+    </Button>
+  </div>
+)}
                 <Button asChild size="lg" variant="outline">
                   <a href={whatsappHref} target="_blank" rel="noopener noreferrer">
                     <WhatsAppIcon className="h-5 w-5" /> WhatsApp
