@@ -29,6 +29,7 @@ export type Database = {
           vehicle_id: string | null
           vehicle_label: string | null
           vehicle_code: string | null
+          vehicle_price: number | null
         }
         Insert: {
           created_at?: string
@@ -44,6 +45,7 @@ export type Database = {
           vehicle_id?: string | null
           vehicle_label?: string | null
           vehicle_code?: string | null
+          vehicle_price?: number | null
         }
         Update: {
           created_at?: string
@@ -59,6 +61,7 @@ export type Database = {
           vehicle_id?: string | null
           vehicle_label?: string | null
           vehicle_code?: string | null
+          vehicle_price?: number | null
         }
         Relationships: [
           {
