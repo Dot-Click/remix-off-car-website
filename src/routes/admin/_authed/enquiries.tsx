@@ -142,6 +142,11 @@ function Enquiries() {
     Vehicle Code: {e.vehicle_code}
   </p>
 )}
+                    {e.vehicle_price != null && (
+  <p className="mt-1 text-sm font-semibold">
+    Price: £{Number(e.vehicle_price).toLocaleString("en-GB")}
+  </p>
+)}
                     <p className="mt-1 whitespace-pre-wrap text-sm text-muted-foreground">{e.message}</p>
                     <p className="mt-3 text-[11px] uppercase tracking-widest text-muted-foreground">
                       Source: {e.source}
