@@ -37,6 +37,8 @@ type FormState = {
   fuel_type: string;
   transmission: string;
   body_type: string;
+  camera: string;
+automatic_climate_control: boolean | null;
   engine: string;
   exterior_color: string;
   interior_color: string;
@@ -57,6 +59,8 @@ const emptyState: FormState = {
   fuel_type: "",
   transmission: "",
   body_type: "",
+  camera: "",
+automatic_climate_control: null,
   engine: "",
   exterior_color: "",
   interior_color: "",
@@ -78,6 +82,8 @@ function toState(v: AdminVehicle): FormState {
     fuel_type: v.fuel_type ?? "",
     transmission: v.transmission ?? "",
     body_type: v.body_type ?? "",
+    camera: v.camera ?? "",
+automatic_climate_control: v.automatic_climate_control ?? null,
     engine: v.engine ?? "",
     exterior_color: v.exterior_color ?? "",
     interior_color: v.interior_color ?? "",
