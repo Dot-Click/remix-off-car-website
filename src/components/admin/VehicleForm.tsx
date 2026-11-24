@@ -148,7 +148,9 @@ export function VehicleForm({ vehicle }: { vehicle?: AdminVehicle }) {
       fuel_type: form.fuel_type || null,
       transmission: form.transmission || null,
       body_type: form.body_type || null,
-      engine: form.engine.trim() || null,
+camera: form.camera.trim() || null,
+automatic_climate_control: form.automatic_climate_control,
+engine: form.engine.trim() || null,
       exterior_color: form.exterior_color.trim() || null,
       interior_color: form.interior_color.trim() || null,
       description: form.description.trim() || null,
@@ -196,6 +198,31 @@ export function VehicleForm({ vehicle }: { vehicle?: AdminVehicle }) {
           <Picker label="Body type" value={form.body_type} options={BODY_TYPES} onChange={(v) => set("body_type", v)} />
           <Field label="Exterior colour" value={form.exterior_color} onChange={(v) => set("exterior_color", v)} />
           <Field label="Interior colour" value={form.interior_color} onChange={(v) => set("interior_color", v)} />
+          
+<Field
+  label="Camera"
+  value={form.camera}
+  onChange={(v) => set("camera", v)}
+  placeholder="e.g. Reversing Camera"
+/>
+
+<Picker
+  label="Automatic Climate Control"
+  value={
+    form.automatic_climate_control === null
+      ? "Not specified"
+      : form.automatic_climate_control
+        ? "Yes"
+        : "No"
+  }
+  options={["Not specified", "Yes", "No"]}
+  onChange={(v) =>
+    set(
+      "automatic_climate_control",
+      v === "Not specified" ? null : v === "Yes"
+    )
+  }
+/>
           <Picker
             label="Status"
             value={form.status}
