@@ -35,6 +35,8 @@ export type Vehicle = {
   onlinePurchase?: boolean;
   /** Interior colour, when the record provides one. */
   interiorColour?: string;
+  camera?: string | null;
+automaticClimateControl?: boolean | null;
   /** Optional walkaround video URL. */
   videoUrl?: string;
 };
