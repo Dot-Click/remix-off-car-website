@@ -89,7 +89,7 @@ const [callback, setCallback] = useState({
   name: "",
   phone: "",
 });
-  const canBuyOnline = vehicle.onlinePurchase !== false && vehicle.status !== "Sold";
+  const canBuyOnline = vehicle.onlinePurchase !== false && vehicle.status === "Available";
 
   const whatsappHref = `${BRAND.whatsapp}?text=${encodeURIComponent(
     `Hi, I'm interested in the ${vehicle.year} ${vehicle.make} ${vehicle.model}. Please provide more details.`,
