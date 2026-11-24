@@ -476,6 +476,9 @@ export type Database = {
 automatic_climate_control: boolean | null
           created_at: string
           description: string | null
+          warranty_info: string | null
+delivery_info: string | null
+part_exchange_info: string | null
           engine: string | null
           exterior_color: string | null
           featured: boolean
@@ -502,6 +505,9 @@ automatic_climate_control: boolean | null
 automatic_climate_control?: boolean | null
           created_at?: string
           description?: string | null
+          warranty_info?: string | null
+delivery_info?: string | null
+part_exchange_info?: string | null
           engine?: string | null
           exterior_color?: string | null
           featured?: boolean
@@ -527,6 +533,9 @@ automatic_climate_control?: boolean | null
 automatic_climate_control?: boolean | null
           created_at?: string
           description?: string | null
+          warranty_info?: string | null
+delivery_info?: string | null
+part_exchange_info?: string | null
           engine?: string | null
           exterior_color?: string | null
           featured?: boolean

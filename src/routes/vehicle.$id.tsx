@@ -406,11 +406,28 @@ source: "vehicle",
                 </Button>
               </div>
 
-              <ul className="mt-7 space-y-2 border-t border-border pt-6 text-xs text-muted-foreground">
-                <li>✓ 12-month warranty included</li>
-                <li>✓ Free nationwide delivery over £30,000</li>
-                <li>✓ Part exchange welcome</li>
-              </ul>
+              
+{[
+  vehicle.warrantyInfo,
+  vehicle.deliveryInfo,
+  vehicle.partExchangeInfo,
+].some((value) => value?.trim()) && (
+  <ul className="mt-7 space-y-2 border-t border-border pt-6 text-xs text-muted-foreground">
+    {[
+      vehicle.warrantyInfo,
+      vehicle.deliveryInfo,
+      vehicle.partExchangeInfo,
+    ]
+      .filter((value): value is string => Boolean(value?.trim()))
+      .map((value, index) => (
+        <li key={index} className="flex items-start gap-2">
+          <span className="shrink-0">✓</span>
+          <span className="whitespace-pre-line">{value}</span>
+        </li>
+      ))}
+  </ul>
+)}
+
             </div>
           </aside>
         </div>

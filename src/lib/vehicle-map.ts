@@ -47,6 +47,9 @@ automaticClimateControl: row.automatic_climate_control ?? null,
   (item) => item.trim().length > 0
 ),
     description: row.description ?? "",
+    warrantyInfo: row.warranty_info ?? null,
+deliveryInfo: row.delivery_info ?? null,
+partExchangeInfo: row.part_exchange_info ?? null,
     onlinePurchase: false,
     ...(row.interior_color ? { interiorColour: row.interior_color } : {}),
     addedDaysAgo: Math.max(

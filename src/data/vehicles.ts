@@ -30,6 +30,9 @@ export type Vehicle = {
   gallery: string[];
   features: string[];
   vehicleHistory?: string[];
+  warrantyInfo?: string | null;
+deliveryInfo?: string | null;
+partExchangeInfo?: string | null;
   description: string;
   addedDaysAgo: number;
   /** When false, online purchase/checkout is disabled and the card shows "Enquire". */
