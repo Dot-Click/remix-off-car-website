@@ -252,6 +252,58 @@ engine: form.engine.trim() || null,
             placeholder="Specification highlights, service history, warranty…"
           />
         </div>
+        
+<div className="mt-8 rounded-xl border border-border p-5">
+  <h3 className="font-display text-lg font-semibold">
+    Vehicle History
+  </h3>
+
+  <p className="mt-2 text-sm text-muted-foreground">
+    Add verified history details for this vehicle.
+  </p>
+
+  <div className="mt-5 space-y-3">
+    {form.vehicle_history.map((item, index) => (
+      <div key={index} className="flex items-center gap-3">
+        <Input
+          value={item}
+          placeholder="e.g. MOT valid until..."
+          onChange={(e) => {
+            const updated = [...form.vehicle_history];
+            updated[index] = e.target.value;
+            set("vehicle_history", updated);
+          }}
+        />
+
+        <Button
+          type="button"
+          variant="outline"
+          size="sm"
+          onClick={() =>
+            set(
+              "vehicle_history",
+              form.vehicle_history.filter((_, i) => i !== index)
+            )
+          }
+        >
+          <Trash2 className="h-4 w-4" />
+        </Button>
+      </div>
+    ))}
+  </div>
+
+  <Button
+    type="button"
+    variant="outline"
+    className="mt-4"
+    onClick={() =>
+      set("vehicle_history", [...form.vehicle_history, ""])
+    }
+  >
+    <Plus className="h-4 w-4" />
+    Add History Point
+  </Button>
+</div>
 
         <div className="mt-6 flex items-center gap-3 rounded-xl border border-border bg-muted/30 px-4 py-3">
           <Switch checked={form.featured} onCheckedChange={(v) => set("featured", v)} id="featured" />
