@@ -7,6 +7,7 @@ on:
       - feature/coming-soon-status-3
     paths:
       - .github/workflows/update-bun-lock.yml
+      - package.json
 
 permissions:
   contents: write
