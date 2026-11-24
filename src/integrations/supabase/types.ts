@@ -472,6 +472,8 @@ export type Database = {
       vehicles: {
         Row: {
           body_type: string | null
+          camera?: string | null
+automatic_climate_control?: boolean | null
           created_at: string
           description: string | null
           engine: string | null
@@ -495,6 +497,8 @@ export type Database = {
         }
         Insert: {
           body_type?: string | null
+          camera?: string | null
+automatic_climate_control?: boolean | null
           created_at?: string
           description?: string | null
           engine?: string | null
@@ -517,6 +521,8 @@ export type Database = {
         }
         Update: {
           body_type?: string | null
+          camera?: string | null
+automatic_climate_control?: boolean | null
           created_at?: string
           description?: string | null
           engine?: string | null
