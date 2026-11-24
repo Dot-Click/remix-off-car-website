@@ -554,7 +554,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"
-      vehicle_status: "Available" | "Reserved" | "Sold"
+      vehicle_status: "Available" | "Reserved" | "Sold" | "Coming Soon"
     }
     CompositeTypes: {
       [_ in never]: never

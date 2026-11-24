@@ -6,7 +6,12 @@ export const VEHICLE_BUCKET = "vehicle-images";
 export type AdminVehicle = Tables<"vehicles">;
 export type VehicleInput = TablesInsert<"vehicles">;
 
-export const VEHICLE_STATUSES = ["Available", "Reserved", "Sold"] as const;
+export const VEHICLE_STATUSES = [
+  "Available",
+  "Reserved",
+  "Sold",
+  "Coming Soon",
+] as const;
 export const FUEL_TYPES = ["Petrol", "Diesel", "Hybrid", "Electric", "Plug-in Hybrid"];
 export const TRANSMISSIONS = ["Automatic", "Manual", "Semi-Automatic"];
 export const BODY_TYPES = [

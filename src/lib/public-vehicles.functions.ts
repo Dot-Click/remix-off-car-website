@@ -12,7 +12,7 @@ import { supabase } from "@/integrations/supabase/client";
  * that non-VITE variable is not defined.
  */
 export const getPublicVehicleRow = createServerFn({ method: "GET" })
-  .inputValidator((data: unknown) => z.object({ id: z.string() }).parse(data))
+ .validator((data: unknown) => z.object({ id: z.string() }).parse(data))
   .handler(async ({ data }) => {
     const { data: row, error } = await supabase
       .from("vehicles")

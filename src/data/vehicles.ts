@@ -24,7 +24,7 @@ export type Vehicle = {
   doors: number;
   vin: string;
   registration: string;
-  status: "Available" | "Reserved" | "Sold";
+  status: "Available" | "Reserved" | "Sold" | "Coming Soon";
   featured: boolean;
   image: string;
   gallery: string[];
