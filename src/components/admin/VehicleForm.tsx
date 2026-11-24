@@ -167,6 +167,7 @@ engine: form.engine.trim() || null,
       status: form.status,
       main_image: form.main_image,
       gallery_images: form.gallery_images,
+    vehicle_history: form.vehicle_history,
     };
 
     try {
