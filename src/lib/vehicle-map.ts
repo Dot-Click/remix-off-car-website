@@ -33,6 +33,8 @@ export function mapRowToVehicle(
     colour: row.exterior_color ?? "\u2014",
     driveType: "AWD",
     engine: row.engine ?? "\u2014",
+    camera: row.camera ?? null,
+automaticClimateControl: row.automatic_climate_control ?? null,
     doors: 5,
     vin: "\u2014",
     registration: "\u2014",

@@ -124,6 +124,18 @@ const [callback, setCallback] = useState({
     { icon: Cog, label: "Transmission", value: vehicle.transmission },
     { icon: Fuel, label: "Fuel", value: vehicle.fuel },
     { icon: Zap, label: "Engine", value: vehicle.engine },
+    
+...(vehicle.camera
+  ? [{ icon: Car, label: "Camera", value: vehicle.camera }]
+  : []),
+...(vehicle.automaticClimateControl !== null &&
+vehicle.automaticClimateControl !== undefined
+  ? [{
+      icon: Zap,
+      label: "Automatic Climate Control",
+      value: vehicle.automaticClimateControl ? "Yes" : "No",
+    }]
+  : []),
     { icon: Palette, label: "Colour", value: vehicle.colour },
     ...(vehicle.interiorColour
       ? [{ icon: Palette, label: "Interior", value: vehicle.interiorColour }]
