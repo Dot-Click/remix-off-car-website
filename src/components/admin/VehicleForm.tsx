@@ -47,6 +47,7 @@ automatic_climate_control: boolean | null;
   status: (typeof VEHICLE_STATUSES)[number];
   main_image: string | null;
   gallery_images: string[];
+  vehicle_history: string[];
 };
 
 const emptyState: FormState = {
@@ -69,6 +70,7 @@ automatic_climate_control: null,
   status: "Available",
   main_image: null,
   gallery_images: [],
+  vehicle_history: [],
 };
 
 function toState(v: AdminVehicle): FormState {
@@ -92,6 +94,7 @@ automatic_climate_control: v.automatic_climate_control ?? null,
     status: v.status,
     main_image: v.main_image,
     gallery_images: v.gallery_images ?? [],
+    vehicle_history: v.vehicle_history ?? [],
   };
 }
 
