@@ -36,6 +36,7 @@ export function VehicleCard({ vehicle, className }: { vehicle: Vehicle; classNam
               vehicle.status === "Available" && "bg-background/85 text-foreground",
               vehicle.status === "Reserved" && "bg-accent/90 text-accent-foreground",
               vehicle.status === "Sold" && "bg-primary/85 text-primary-foreground",
+              vehicle.status === "Coming Soon" && "bg-amber-100 text-amber-950",
             )}
           >
             {vehicle.status}
