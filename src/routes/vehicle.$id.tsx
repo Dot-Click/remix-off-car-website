@@ -278,8 +278,6 @@ vehicle.automaticClimateControl !== undefined
     Vehicle history available on request.
   </li>
 )}
-
-                  ))}
                 </ul>
               </div>
               <div className="overflow-hidden rounded-2xl border border-border shadow-soft">
