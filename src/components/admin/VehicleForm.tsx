@@ -43,6 +43,9 @@ automatic_climate_control: boolean | null;
   exterior_color: string;
   interior_color: string;
   description: string;
+  warranty_info: string;
+delivery_info: string;
+part_exchange_info: string;
   featured: boolean;
   status: (typeof VEHICLE_STATUSES)[number];
   main_image: string | null;
@@ -66,6 +69,9 @@ automatic_climate_control: null,
   exterior_color: "",
   interior_color: "",
   description: "",
+  warranty_info: "",
+delivery_info: "",
+part_exchange_info: "",
   featured: false,
   status: "Available",
   main_image: null,
@@ -90,6 +96,9 @@ automatic_climate_control: v.automatic_climate_control ?? null,
     exterior_color: v.exterior_color ?? "",
     interior_color: v.interior_color ?? "",
     description: v.description ?? "",
+    warranty_info: v.warranty_info ?? "",
+delivery_info: v.delivery_info ?? "",
+part_exchange_info: v.part_exchange_info ?? "",
     featured: v.featured,
     status: v.status,
     main_image: v.main_image,
@@ -163,6 +172,9 @@ engine: form.engine.trim() || null,
       exterior_color: form.exterior_color.trim() || null,
       interior_color: form.interior_color.trim() || null,
       description: form.description.trim() || null,
+    warranty_info: form.warranty_info.trim() || null,
+delivery_info: form.delivery_info.trim() || null,
+part_exchange_info: form.part_exchange_info.trim() || null,
       featured: form.featured,
       status: form.status,
       main_image: form.main_image,
@@ -303,6 +315,55 @@ engine: form.engine.trim() || null,
     <Plus className="h-4 w-4" />
     Add History Point
   </Button>
+</div>
+
+<div className="mt-8 rounded-xl border border-border p-5">
+  <h3 className="font-display text-lg font-semibold">
+    Vehicle Benefits & Terms
+  </h3>
+
+  <p className="mt-2 text-sm text-muted-foreground">
+    Enter the confirmed terms for this specific vehicle.
+    Leave a field blank if it does not apply.
+  </p>
+
+  <div className="mt-5 space-y-4">
+    <div>
+      <Label className="mb-2 block text-sm">
+        Warranty
+      </Label>
+      <Textarea
+        rows={2}
+        value={form.warranty_info}
+        onChange={(e) => set("warranty_info", e.target.value)}
+        placeholder="e.g. 12-month warranty included"
+      />
+    </div>
+
+    <div>
+      <Label className="mb-2 block text-sm">
+        Delivery
+      </Label>
+      <Textarea
+        rows={2}
+        value={form.delivery_info}
+        onChange={(e) => set("delivery_info", e.target.value)}
+        placeholder="e.g. Free nationwide delivery"
+      />
+    </div>
+
+    <div>
+      <Label className="mb-2 block text-sm">
+        Part Exchange
+      </Label>
+      <Textarea
+        rows={2}
+        value={form.part_exchange_info}
+        onChange={(e) => set("part_exchange_info", e.target.value)}
+        placeholder="e.g. Part exchange welcome"
+      />
+    </div>
+  </div>
 </div>
 
         <div className="mt-6 flex items-center gap-3 rounded-xl border border-border bg-muted/30 px-4 py-3">
