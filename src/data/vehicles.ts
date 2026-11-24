@@ -29,6 +29,7 @@ export type Vehicle = {
   image: string;
   gallery: string[];
   features: string[];
+  vehicleHistory?: string[];
   description: string;
   addedDaysAgo: number;
   /** When false, online purchase/checkout is disabled and the card shows "Enquire". */

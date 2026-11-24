@@ -43,6 +43,9 @@ automaticClimateControl: row.automatic_climate_control ?? null,
     image: main,
     gallery: [main, ...extra],
     features: [],
+    vehicleHistory: (row.vehicle_history ?? []).filter(
+  (item) => item.trim().length > 0
+),
     description: row.description ?? "",
     onlinePurchase: false,
     ...(row.interior_color ? { interiorColour: row.interior_color } : {}),

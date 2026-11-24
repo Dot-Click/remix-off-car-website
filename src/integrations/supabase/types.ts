@@ -480,7 +480,8 @@ automatic_climate_control: boolean | null
           exterior_color: string | null
           featured: boolean
           fuel_type: string | null
-          gallery_images: string[]
+         gallery_images: string[]
+         vehicle_history: string[]
           id: string
           interior_color: string | null
           main_image: string | null
@@ -506,6 +507,7 @@ automatic_climate_control?: boolean | null
           featured?: boolean
           fuel_type?: string | null
           gallery_images?: string[]
+          vehicle_history?: string[]
           id?: string
           interior_color?: string | null
           main_image?: string | null
@@ -530,6 +532,7 @@ automatic_climate_control?: boolean | null
           featured?: boolean
           fuel_type?: string | null
           gallery_images?: string[]
+          vehicle_history?: string[]
           id?: string
           interior_color?: string | null
           main_image?: string | null

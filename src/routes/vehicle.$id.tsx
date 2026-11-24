@@ -265,12 +265,19 @@ vehicle.automaticClimateControl !== undefined
               <div className="rounded-2xl border border-border bg-card p-7 shadow-soft">
                 <h3 className="font-display text-xl font-semibold">Vehicle history</h3>
                 <ul className="mt-5 space-y-3 text-sm">
-                  {["HPI clear — no outstanding finance", "Full main dealer service history", "Two former keepers", "MOT valid with no advisories", "165-point J1 inspection passed"].map((h) => (
-                    <li key={h} className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 shrink-0 text-accent" />
-                      {h}
-                    </li>
-                  ))}
+                  
+{(vehicle.vehicleHistory ?? []).length > 0 ? (
+  vehicle.vehicleHistory!.map((h, index) => (
+    <li key={index} className="flex items-center gap-2">
+      <CheckCircle2 className="h-4 w-4 shrink-0 text-accent" />
+      {h}
+    </li>
+  ))
+) : (
+  <li className="text-muted-foreground">
+    Vehicle history available on request.
+  </li>
+)}
                 </ul>
               </div>
               <div className="overflow-hidden rounded-2xl border border-border shadow-soft">
