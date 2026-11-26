@@ -12,7 +12,7 @@ export const VEHICLE_STATUSES = [
   "Sold",
   "Coming Soon",
 ] as const;
-export const FUEL_TYPES = ["Petrol", "Diesel", "Hybrid", "Electric", "Plug-in Hybrid"];
+export const FUEL_TYPES = ["Petrol", "Diesel", "Petrol Hybrid", "Electric", "Plug-in Hybrid"];
 export const TRANSMISSIONS = ["Automatic", "Manual", "Semi-Automatic"];
 export const BODY_TYPES = [
   "SUV",
